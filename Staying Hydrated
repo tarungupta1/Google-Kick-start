@@ -18,6 +18,9 @@ Notes:
 Video Link: https://youtu.be/AiUtdcd0kLQ?t=219
 
 
+Time Complexity: O(N.log(N)) for each test case
+Space Complexity: O(N) for each test case
+
 Solution
 #include <bits/stdc++.h>
 using namespace std;
