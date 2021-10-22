@@ -16,6 +16,9 @@ feed them later!
 
 
 
+Time Complexity: O(N) for each test case
+Space Complexity: O(1) for each test case
+
 Solution
 #include <bits/stdc++.h>
 using namespace std;
