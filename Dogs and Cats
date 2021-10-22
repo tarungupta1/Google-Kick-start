@@ -1,0 +1,78 @@
+Problem Name: Dogs and Cats
+Competition: Round G 2021
+Link: https://codingcompetitions.withgoogle.com/kickstart/round/00000000004362d6/00000000008b3771
+
+Question
+You work for an animal shelter and you are responsible for feeding the animals. You already prepared D portions of dog food and C portions of cat food.
+There are a total of N animals waiting in a line, some of which are dogs and others are cats. It might be possible that all the animals in the line are dogs or all the animals 
+are cats. A string S of N characters C and D represents the order of cats and dogs in the line. The i-th character is equal to C if the i-th animal in the line is a cat. 
+Similarly, the i-th character is equal to D if the i-th animal in the line is a dog.
+The animals are fed in the order they stay in the line. Each dog eats exactly 1 portion of dog food and similarly each cat eats exactly 1 portion of cat food. Moreover, you 
+have extra portions of cat food. Every time a dog eats food, you bring M extra portions of cat food for cats.
+Animals have to be fed in the order they wait in line and an animal can only eat if the animal before it has already eaten. That means that if you run out of dog (or cat) food 
+portions and a dog (or a cat) is about to get fed, the line will not move, as all the animals will wait patiently.
+You need to determine if in this scenario all the dogs in the line will be fed. Note that this means that some cats might remain in the line, but worry not, you will eventually 
+feed them later!
+
+
+
+Solution
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(void){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);    cout.tie(0);
+    int t;  cin>>t;
+    int test = 1;
+    while(test <= t){
+        ll n, d, c, m;   cin>>n>>d>>c>>m;
+        cin.ignore();
+        string str;     getline(cin, str);
+        
+        int count_dogs = 0;
+        for(int i=0; i<n; i++){
+            if(str[i] == 'D'){
+                count_dogs++;
+            }
+        }
+        
+        bool tag = true;
+        for(int i=0; i<n; i++){
+            if(count_dogs == 0){
+                break;
+            }
+            
+            if(str[i] == 'D'){
+                if(d == 0){
+                    tag = false;
+                    break;
+                }
+                else{
+                    d--;
+                    c += m;
+                }
+                count_dogs--;
+            }
+            else{
+                if(c == 0){
+                    tag = false;
+                    break;
+                }
+                else{
+                    c--;
+                }
+            }
+        }
+        
+        if(tag == true){
+            cout<<"Case #"<<test<<": YES"<<endl;
+            test++;
+        }
+        else{
+            cout<<"Case #"<<test<<": NO"<<endl;
+            test++;
+        }
+    }
+}
